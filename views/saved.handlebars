@@ -1,0 +1,64 @@
+{{!-- body --}}
+<div class="container-fluid px-2">
+    <div class="col-lg-12" id="search-results">
+
+        {{!-- read / notes / delete --}} 
+        {{#each articles}}
+        <div id={{this.id}}>
+            <div class="card mb-4 text-center">
+                <h3 class="card-header bg-primary text-white">{{this.title}}</h3>
+                <div class="card-body">
+                    <p class="card-text">{{this.summary}}</p>
+                    <a href={{this.link}} class="btn btn-info btn-sm mr-2" target="_blank">Read Article</a>
+                    <button class="btn btn-primary btn-sm mr-2" id="viewnotes" data-id={{this.id}}>Note(s) ({{this.notes.length}})</button>
+                    <button class="btn btn-danger btn-sm mr-2" id="deletearticle" data-id={{this.id}}>Delete</button>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+
+    {{!-- notes --}}
+    <div class="modal fade" id="notesModal" tabindex="-1" role="dialog" aria-labelledby="notesModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="notesModalLabel"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="displaynotes">
+                    </div>
+
+                    {{!-- new notes --}}
+                    <div class="form-group mt-4">
+                        <textarea class="form-control" id="bodyinput" rows="3" placeholder="New Note"></textarea>
+                    </div>
+                </div>
+
+                {{!-- save notes --}}
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id="savenote">Save Note</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{!-- no new articles --}}
+    <div class="col-lg-12">
+
+        {{#if articles}}
+        <div class="card" id="noarticles" style="display: none;">
+            {{else}}
+            <div class="card" id="noarticles">
+                {{/if}}
+
+                <h3 class="card-header text-black text-center">
+                    No Saved Articles
+                </h3>
+            </div>
+        </div>
+
+    </div>

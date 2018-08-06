@@ -1,0 +1,11 @@
+body { 
+  padding-top: 50px; 
+  background-color: lemonchiffon;
+}
+
+.jumbotron {
+  font-family: "Times New Roman";
+  font-variant: small-caps;
+  background-image: url("/images/3657a3ef9fea887.jpg");
+  background-size: cover;
+}
